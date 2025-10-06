@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { LogIn, UserPlus } from 'lucide-react';
+import { LogIn, UserPlus, Briefcase, Building2, Users, TrendingUp, Shield, Clock } from 'lucide-react';
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -31,8 +31,60 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-slate-800 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDEzNGg2MHY2MEgzNnptMCAwaDYwdjYwSDM2em0wIDBoNjB2NjBIMzZ6bTAgMGg2MHY2MEgzNnptMCAwaDYwdjYwSDM2em0wIDBoNjB2NjBIMzZ6bTAgMGg2MHY2MEgzNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+
+      <div className="relative min-h-screen flex items-center justify-center p-4">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl w-full">
+          <div className="hidden lg:flex flex-col justify-center text-white space-y-8 pr-12">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                <Shield className="w-5 h-5" />
+                <span className="text-sm font-semibold">Official Government Portal</span>
+              </div>
+              <h1 className="text-5xl font-bold leading-tight">
+                Your Gateway to Public Service Excellence
+              </h1>
+              <p className="text-xl text-blue-100">
+                Connect with opportunities that make a difference. Join thousands of professionals building a better tomorrow.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <Briefcase className="w-10 h-10 mb-3 text-blue-200" />
+                <div className="text-3xl font-bold mb-1">500+</div>
+                <div className="text-blue-100 text-sm">Active Positions</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <Building2 className="w-10 h-10 mb-3 text-blue-200" />
+                <div className="text-3xl font-bold mb-1">50+</div>
+                <div className="text-blue-100 text-sm">Departments</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <Users className="w-10 h-10 mb-3 text-blue-200" />
+                <div className="text-3xl font-bold mb-1">10K+</div>
+                <div className="text-blue-100 text-sm">Applicants</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <TrendingUp className="w-10 h-10 mb-3 text-blue-200" />
+                <div className="text-3xl font-bold mb-1">98%</div>
+                <div className="text-blue-100 text-sm">Success Rate</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <Clock className="w-6 h-6 text-blue-200 flex-shrink-0 mt-1" />
+              <div>
+                <div className="font-semibold mb-1">Fast Application Process</div>
+                <div className="text-sm text-blue-100">
+                  Apply in minutes with our streamlined system. Upload your documents once and use them for multiple applications.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-2xl w-full p-8 lg:p-10">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
             <LogIn className="w-8 h-8 text-white" />
@@ -161,6 +213,8 @@ export default function Auth() {
               ? 'Already have an account? Sign in'
               : "Don't have an account? Sign up"}
           </button>
+        </div>
+      </div>
         </div>
       </div>
     </div>

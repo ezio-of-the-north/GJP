@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { supabase, Job, Application } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import { Briefcase, LogOut, Plus, Users, Eye } from 'lucide-react';
+import { Briefcase, LogOut, Plus, Users, Eye, TrendingUp, CheckCircle2, Clock, XCircle, FileText, BarChart3 } from 'lucide-react';
 import JobForm from './JobForm';
 import ApplicationsView from './ApplicationsView';
 
 export default function HRDashboard() {
   const { profile, signOut } = useAuth();
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [allApplications, setAllApplications] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showJobForm, setShowJobForm] = useState(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
@@ -16,6 +17,7 @@ export default function HRDashboard() {
 
   useEffect(() => {
     fetchJobs();
+    fetchAllApplications();
   }, []);
 
   const fetchJobs = async () => {
@@ -47,6 +49,20 @@ export default function HRDashboard() {
     }
   };
 
+  const fetchAllApplications = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('applications')
+        .select('*, jobs!inner(*)')
+        .eq('jobs.posted_by', profile?.id);
+
+      if (error) throw error;
+      setAllApplications(data || []);
+    } catch (error) {
+      console.error('Error fetching applications:', error);
+    }
+  };
+
   const handleJobSuccess = () => {
     setShowJobForm(false);
     setSelectedJob(null);
@@ -74,6 +90,16 @@ export default function HRDashboard() {
     return colors[status] || 'bg-gray-100 text-gray-800';
   };
 
+  const stats = {
+    totalJobs: jobs.length,
+    openJobs: jobs.filter(job => job.status === 'open').length,
+    totalApplications: allApplications.length,
+    pending: allApplications.filter(app => app.status === 'pending').length,
+    reviewing: allApplications.filter(app => app.status === 'reviewing' || app.status === 'shortlisted').length,
+    accepted: allApplications.filter(app => app.status === 'accepted').length,
+    rejected: allApplications.filter(app => app.status === 'rejected').length,
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow-sm border-b">
@@ -98,13 +124,57 @@ export default function HRDashboard() {
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
+            <div className="flex items-center justify-between mb-2">
+              <Briefcase className="w-8 h-8 opacity-80" />
+              <BarChart3 className="w-5 h-5 opacity-60" />
+            </div>
+            <div className="text-3xl font-bold mb-1">{stats.totalJobs}</div>
+            <div className="text-blue-100 text-sm">Total Job Postings</div>
+            <div className="mt-2 text-xs text-blue-200">{stats.openJobs} currently open</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-6 text-white shadow-lg">
+            <div className="flex items-center justify-between mb-2">
+              <Users className="w-8 h-8 opacity-80" />
+              <TrendingUp className="w-5 h-5 opacity-60" />
+            </div>
+            <div className="text-3xl font-bold mb-1">{stats.totalApplications}</div>
+            <div className="text-emerald-100 text-sm">Total Applications</div>
+            <div className="mt-2 text-xs text-emerald-200">{stats.pending} awaiting review</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-white shadow-lg">
+            <div className="flex items-center justify-between mb-2">
+              <Clock className="w-8 h-8 opacity-80" />
+              <FileText className="w-5 h-5 opacity-60" />
+            </div>
+            <div className="text-3xl font-bold mb-1">{stats.reviewing}</div>
+            <div className="text-amber-100 text-sm">Under Review</div>
+            <div className="mt-2 text-xs text-amber-200">Reviewing & shortlisted</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl p-6 text-white shadow-lg">
+            <div className="flex items-center justify-between mb-2">
+              <CheckCircle2 className="w-8 h-8 opacity-80" />
+              <TrendingUp className="w-5 h-5 opacity-60" />
+            </div>
+            <div className="text-3xl font-bold mb-1">{stats.accepted}</div>
+            <div className="text-green-100 text-sm">Offers Accepted</div>
+            <div className="mt-2 text-xs text-green-200">
+              {stats.totalApplications > 0 ? Math.round((stats.accepted / stats.totalApplications) * 100) : 0}% success rate
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
           <div className="flex gap-4">
             <button
               onClick={() => setView('jobs')}
-              className={`px-6 py-3 rounded-lg font-semibold transition ${
+              className={`px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
                 view === 'jobs'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-blue-600 text-white shadow-blue-200'
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
             >
@@ -112,9 +182,9 @@ export default function HRDashboard() {
             </button>
             <button
               onClick={() => setView('applications')}
-              className={`px-6 py-3 rounded-lg font-semibold transition ${
+              className={`px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
                 view === 'applications'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-blue-600 text-white shadow-blue-200'
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
             >
@@ -125,7 +195,7 @@ export default function HRDashboard() {
           {view === 'jobs' && (
             <button
               onClick={() => setShowJobForm(true)}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition"
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg"
             >
               <Plus className="w-5 h-5" />
               Post New Job
@@ -160,29 +230,48 @@ export default function HRDashboard() {
                 {jobs.map((job) => (
                   <div
                     key={job.id}
-                    className="bg-white rounded-lg shadow hover:shadow-md transition p-6"
+                    className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200"
                   >
                     <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{job.title}</h3>
-                        <p className="text-blue-600 font-semibold">{job.department}</p>
+                      <div className="flex-1">
+                        <div className="flex items-start gap-3 mb-2">
+                          <div className="p-3 bg-blue-50 rounded-lg">
+                            <Briefcase className="w-6 h-6 text-blue-600" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-1">{job.title}</h3>
+                            <p className="text-blue-600 font-semibold">{job.department}</p>
+                          </div>
+                        </div>
                       </div>
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(job.status)}`}>
+                      <span className={`px-4 py-2 rounded-full text-sm font-medium shadow-sm ${getStatusColor(job.status)}`}>
                         {job.status.charAt(0).toUpperCase() + job.status.slice(1)}
                       </span>
                     </div>
 
-                    <p className="text-gray-700 mb-4 line-clamp-2">{job.description}</p>
+                    <p className="text-gray-700 mb-4 line-clamp-2 leading-relaxed">{job.description}</p>
 
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex items-center gap-2 text-gray-600">
-                        <Users className="w-4 h-4" />
-                        <span className="text-sm font-semibold">
-                          {applicationCounts[job.id] || 0} Applications
-                        </span>
-                      </div>
-                      <div className="text-gray-600 text-sm">
-                        Deadline: {new Date(job.deadline).toLocaleDateString()}
+                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                      <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2">
+                          <div className="p-2 bg-blue-100 rounded-lg">
+                            <Users className="w-5 h-5 text-blue-600" />
+                          </div>
+                          <div>
+                            <div className="text-2xl font-bold text-gray-900">{applicationCounts[job.id] || 0}</div>
+                            <div className="text-xs text-gray-600">Applications</div>
+                          </div>
+                        </div>
+                        <div className="h-12 w-px bg-gray-300"></div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <Clock className="w-5 h-5 text-gray-500" />
+                          <div>
+                            <div className="text-sm font-semibold">
+                              {new Date(job.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </div>
+                            <div className="text-xs text-gray-600">Deadline</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -192,13 +281,13 @@ export default function HRDashboard() {
                           setSelectedJob(job);
                           setShowJobForm(true);
                         }}
-                        className="px-4 py-2 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
+                        className="flex-1 px-4 py-2.5 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDeleteJob(job.id)}
-                        className="px-4 py-2 border-2 border-red-600 text-red-600 font-semibold rounded-lg hover:bg-red-50 transition"
+                        className="flex-1 px-4 py-2.5 border-2 border-red-600 text-red-600 font-semibold rounded-lg hover:bg-red-50 transition"
                       >
                         Delete
                       </button>

@@ -253,48 +253,49 @@ export default function DocumentsView() {
           {documents.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white rounded-lg shadow hover:shadow-md transition p-6"
+              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
+                <div className="p-3 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
                   {getFileIcon(doc.file_type)}
                 </div>
                 <button
                   onClick={() => handleDelete(doc.id)}
-                  className="text-red-600 hover:text-red-700 transition"
+                  className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition"
                   title="Delete document"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>
               </div>
 
-              <h3 className="font-bold text-gray-900 mb-2 truncate" title={doc.name}>
+              <h3 className="font-bold text-gray-900 mb-3 truncate text-lg" title={doc.name}>
                 {doc.name}
               </h3>
 
-              <div className="space-y-2">
+              <div className="space-y-3 mb-4">
                 <span
-                  className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getTypeColor(
+                  className={`inline-block px-3 py-1.5 rounded-full text-xs font-semibold ${getTypeColor(
                     doc.file_type
                   )}`}
                 >
-                  {doc.file_type.charAt(0).toUpperCase() + doc.file_type.slice(1)}
+                  {doc.file_type.charAt(0).toUpperCase() + doc.file_type.slice(1).replace('_', ' ')}
                 </span>
 
-                {doc.file_size > 0 && (
-                  <p className="text-sm text-gray-600">Size: {formatFileSize(doc.file_size)}</p>
-                )}
-
-                <p className="text-xs text-gray-500">
-                  Added: {new Date(doc.created_at).toLocaleDateString()}
-                </p>
+                <div className="flex items-center justify-between text-sm">
+                  {doc.file_size > 0 && (
+                    <span className="text-gray-600 font-medium">{formatFileSize(doc.file_size)}</span>
+                  )}
+                  <span className="text-xs text-gray-500">
+                    {new Date(doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </span>
+                </div>
               </div>
 
               <a
                 href={doc.file_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 block w-full text-center bg-blue-50 hover:bg-blue-100 text-blue-600 font-semibold py-2 px-4 rounded-lg transition"
+                className="mt-4 block w-full text-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 px-4 rounded-lg transition shadow-sm hover:shadow-md"
               >
                 View Document
               </a>

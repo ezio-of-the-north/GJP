@@ -49,7 +49,7 @@ export default function ApplicationsView() {
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
       pending: 'bg-yellow-100 text-yellow-800',
-      reviewing: 'bg-blue-100 text-blue-800',
+      reviewing: 'bg-green-100 text-green-800',
       shortlisted: 'bg-green-100 text-green-800',
       rejected: 'bg-red-100 text-red-800',
       accepted: 'bg-emerald-100 text-emerald-800',
@@ -87,7 +87,7 @@ export default function ApplicationsView() {
               placeholder="Search by name, email, job title, or department..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
             />
           </div>
 
@@ -99,7 +99,7 @@ export default function ApplicationsView() {
                   onClick={() => setFilter(status)}
                   className={`px-4 py-2 rounded-lg font-medium text-sm transition shadow-sm ${
                     filter === status
-                      ? 'bg-blue-600 text-white shadow-blue-200'
+                      ? 'bg-green-600 text-white shadow-green-200'
                       : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                   }`}
                 >
@@ -113,7 +113,7 @@ export default function ApplicationsView() {
 
       {loading ? (
         <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
         </div>
       ) : filteredApplications.length === 0 ? (
         <div className="bg-white rounded-xl shadow p-12 text-center">
@@ -129,14 +129,14 @@ export default function ApplicationsView() {
           {filteredApplications.map((application) => (
             <div
               key={application.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200"
+              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-green-200"
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-1">
                     {application.jobs.title}
                   </h3>
-                  <p className="text-blue-600 font-semibold mb-2">
+                  <p className="text-green-600 font-semibold mb-2">
                     {application.jobs.department}
                   </p>
                 </div>
@@ -188,7 +188,7 @@ export default function ApplicationsView() {
                   onChange={(e) =>
                     updateApplicationStatus(application.id, e.target.value)
                   }
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition font-medium text-sm"
+                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition font-medium text-sm"
                 >
                   <option value="pending">Pending</option>
                   <option value="reviewing">Reviewing</option>

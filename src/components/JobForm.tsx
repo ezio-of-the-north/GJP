@@ -106,7 +106,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 required
                 value={formData.title}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 placeholder="e.g., Senior Software Engineer"
               />
             </div>
@@ -121,7 +121,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 required
                 value={formData.department}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 placeholder="e.g., Ministry of Technology"
               />
             </div>
@@ -137,7 +137,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition resize-none"
               placeholder="Describe the role, responsibilities, and what the candidate will be doing..."
             />
           </div>
@@ -152,7 +152,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
               value={formData.requirements}
               onChange={handleChange}
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition resize-none"
               placeholder="List qualifications, skills, experience, and education requirements..."
             />
           </div>
@@ -168,7 +168,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 required
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 placeholder="e.g., New Delhi, India"
               />
             </div>
@@ -183,7 +183,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 required
                 value={formData.salary_range}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 placeholder="e.g., ₹50,000 - ₹80,000 per month"
               />
             </div>
@@ -199,7 +199,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 required
                 value={formData.employment_type}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
               >
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
@@ -218,7 +218,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 value={formData.deadline}
                 onChange={handleChange}
                 min={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
               />
             </div>
 
@@ -231,7 +231,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
                 required
                 value={formData.status}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
               >
                 <option value="open">Open</option>
                 <option value="closed">Closed</option>
@@ -257,7 +257,7 @@ export default function JobForm({ job, onClose, onSuccess }: JobFormProps) {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Save className="w-5 h-5" />
               {loading ? 'Saving...' : job ? 'Update Job' : 'Post Job'}

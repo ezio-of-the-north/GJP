@@ -77,7 +77,7 @@ export default function ApplicantDashboard() {
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
       pending: 'bg-yellow-100 text-yellow-800',
-      reviewing: 'bg-blue-100 text-blue-800',
+      reviewing: 'bg-green-100 text-green-800',
       shortlisted: 'bg-green-100 text-green-800',
       rejected: 'bg-red-100 text-red-800',
       accepted: 'bg-emerald-100 text-emerald-800',
@@ -108,10 +108,13 @@ export default function ApplicantDashboard() {
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3">
-              <Briefcase className="w-8 h-8 text-blue-600" />
-              <h1 className="text-xl font-bold text-gray-900">Government Job Portal</h1>
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center gap-4">
+              <img src="/MGB LOGO.png" alt="MGB Logo" className="h-14 w-14" />
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">MGB Career Portal</h1>
+                <p className="text-xs text-gray-600">Mines and Geosciences Bureau - Region 2</p>
+              </div>
             </div>
             <div className="flex items-center gap-4">
               <span className="text-sm text-gray-600">Welcome, {profile?.full_name}</span>
@@ -129,13 +132,13 @@ export default function ApplicantDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
+          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-2">
               <FileText className="w-8 h-8 opacity-80" />
               <TrendingUp className="w-5 h-5 opacity-60" />
             </div>
             <div className="text-3xl font-bold mb-1">{stats.totalApplications}</div>
-            <div className="text-blue-100 text-sm">Total Applications</div>
+            <div className="text-green-100 text-sm">Total Applications</div>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl p-6 text-white shadow-lg">
@@ -171,7 +174,7 @@ export default function ApplicantDashboard() {
             onClick={() => setView('jobs')}
             className={`px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
               view === 'jobs'
-                ? 'bg-blue-600 text-white shadow-blue-200'
+                ? 'bg-green-600 text-white shadow-green-200'
                 : 'bg-white text-gray-700 hover:bg-gray-50'
             }`}
           >
@@ -181,7 +184,7 @@ export default function ApplicantDashboard() {
             onClick={() => setView('applications')}
             className={`px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
               view === 'applications'
-                ? 'bg-blue-600 text-white shadow-blue-200'
+                ? 'bg-green-600 text-white shadow-green-200'
                 : 'bg-white text-gray-700 hover:bg-gray-50'
             }`}
           >
@@ -191,7 +194,7 @@ export default function ApplicantDashboard() {
             onClick={() => setView('documents')}
             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
               view === 'documents'
-                ? 'bg-blue-600 text-white shadow-blue-200'
+                ? 'bg-green-600 text-white shadow-green-200'
                 : 'bg-white text-gray-700 hover:bg-gray-50'
             }`}
           >
@@ -219,14 +222,14 @@ export default function ApplicantDashboard() {
                       placeholder="Search jobs..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                     />
                   </div>
 
                   <select
                     value={filterDepartment}
                     onChange={(e) => setFilterDepartment(e.target.value)}
-                    className="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    className="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                   >
                     <option value="all">All Departments</option>
                     {departments.map(dept => (
@@ -237,7 +240,7 @@ export default function ApplicantDashboard() {
                   <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    className="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                   >
                     <option value="all">All Types</option>
                     <option value="Full-time">Full-time</option>
@@ -250,7 +253,7 @@ export default function ApplicantDashboard() {
 
             {loading ? (
               <div className="text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
               </div>
             ) : filteredJobs.length === 0 ? (
               <div className="bg-white rounded-lg shadow p-12 text-center">
@@ -264,21 +267,21 @@ export default function ApplicantDashboard() {
                 {filteredJobs.map((job) => (
                   <div
                     key={job.id}
-                    className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200"
+                    className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-green-200"
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex-1">
                         <div className="flex items-start gap-3 mb-2">
-                          <div className="p-3 bg-blue-50 rounded-lg">
-                            <Briefcase className="w-6 h-6 text-blue-600" />
+                          <div className="p-3 bg-green-50 rounded-lg">
+                            <Briefcase className="w-6 h-6 text-green-600" />
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-gray-900 mb-1">{job.title}</h3>
-                            <p className="text-blue-600 font-semibold">{job.department}</p>
+                            <p className="text-green-600 font-semibold">{job.department}</p>
                           </div>
                         </div>
                       </div>
-                      <span className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full text-sm font-medium shadow-sm">
+                      <span className="px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full text-sm font-medium shadow-sm">
                         {job.employment_type}
                       </span>
                     </div>
@@ -310,7 +313,7 @@ export default function ApplicantDashboard() {
                         className={`flex-1 font-semibold py-3 px-6 rounded-lg transition-all duration-200 ${
                           hasApplied(job.id)
                             ? 'bg-gray-100 text-gray-500 cursor-not-allowed'
-                            : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-md hover:shadow-lg'
+                            : 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-md hover:shadow-lg'
                         }`}
                         disabled={hasApplied(job.id)}
                       >
@@ -335,7 +338,7 @@ export default function ApplicantDashboard() {
                 <p className="text-gray-600">You haven't applied to any jobs yet</p>
                 <button
                   onClick={() => setView('jobs')}
-                  className="mt-4 text-blue-600 hover:text-blue-700 font-semibold"
+                  className="mt-4 text-green-600 hover:text-green-700 font-semibold"
                 >
                   Browse Available Jobs
                 </button>
@@ -352,7 +355,7 @@ export default function ApplicantDashboard() {
                         <h3 className="text-xl font-bold text-gray-900 mb-2">
                           {application.jobs.title}
                         </h3>
-                        <p className="text-blue-600 font-semibold">{application.jobs.department}</p>
+                        <p className="text-green-600 font-semibold">{application.jobs.department}</p>
                       </div>
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(application.status)}`}>
                         {application.status.charAt(0).toUpperCase() + application.status.slice(1)}

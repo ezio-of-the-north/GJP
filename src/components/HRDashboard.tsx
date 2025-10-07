@@ -104,10 +104,13 @@ export default function HRDashboard() {
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3">
-              <Briefcase className="w-8 h-8 text-blue-600" />
-              <h1 className="text-xl font-bold text-gray-900">HR Management Portal</h1>
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center gap-4">
+              <img src="/MGB LOGO.png" alt="MGB Logo" className="h-14 w-14" />
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">MGB HR Portal</h1>
+                <p className="text-xs text-gray-600">Mines and Geosciences Bureau - Region 2</p>
+              </div>
             </div>
             <div className="flex items-center gap-4">
               <span className="text-sm text-gray-600">Welcome, {profile?.full_name}</span>
@@ -125,14 +128,14 @@ export default function HRDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
+          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white shadow-lg">
             <div className="flex items-center justify-between mb-2">
               <Briefcase className="w-8 h-8 opacity-80" />
               <BarChart3 className="w-5 h-5 opacity-60" />
             </div>
             <div className="text-3xl font-bold mb-1">{stats.totalJobs}</div>
-            <div className="text-blue-100 text-sm">Total Job Postings</div>
-            <div className="mt-2 text-xs text-blue-200">{stats.openJobs} currently open</div>
+            <div className="text-green-100 text-sm">Total Job Postings</div>
+            <div className="mt-2 text-xs text-green-200">{stats.openJobs} currently open</div>
           </div>
 
           <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-6 text-white shadow-lg">
@@ -174,7 +177,7 @@ export default function HRDashboard() {
               onClick={() => setView('jobs')}
               className={`px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
                 view === 'jobs'
-                  ? 'bg-blue-600 text-white shadow-blue-200'
+                  ? 'bg-green-600 text-white shadow-green-200'
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
             >
@@ -184,7 +187,7 @@ export default function HRDashboard() {
               onClick={() => setView('applications')}
               className={`px-6 py-3 rounded-lg font-semibold transition shadow-sm ${
                 view === 'applications'
-                  ? 'bg-blue-600 text-white shadow-blue-200'
+                  ? 'bg-green-600 text-white shadow-green-200'
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
             >
@@ -195,7 +198,7 @@ export default function HRDashboard() {
           {view === 'jobs' && (
             <button
               onClick={() => setShowJobForm(true)}
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg"
+              className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-3 px-6 rounded-lg transition shadow-md hover:shadow-lg"
             >
               <Plus className="w-5 h-5" />
               Post New Job
@@ -212,7 +215,7 @@ export default function HRDashboard() {
 
             {loading ? (
               <div className="text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
               </div>
             ) : jobs.length === 0 ? (
               <div className="bg-white rounded-lg shadow p-12 text-center">
@@ -220,7 +223,7 @@ export default function HRDashboard() {
                 <p className="text-gray-600 mb-4">You haven't posted any jobs yet</p>
                 <button
                   onClick={() => setShowJobForm(true)}
-                  className="text-blue-600 hover:text-blue-700 font-semibold"
+                  className="text-green-600 hover:text-green-700 font-semibold"
                 >
                   Post Your First Job
                 </button>
@@ -230,17 +233,17 @@ export default function HRDashboard() {
                 {jobs.map((job) => (
                   <div
                     key={job.id}
-                    className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200"
+                    className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-green-200"
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex-1">
                         <div className="flex items-start gap-3 mb-2">
-                          <div className="p-3 bg-blue-50 rounded-lg">
-                            <Briefcase className="w-6 h-6 text-blue-600" />
+                          <div className="p-3 bg-green-50 rounded-lg">
+                            <Briefcase className="w-6 h-6 text-green-600" />
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-gray-900 mb-1">{job.title}</h3>
-                            <p className="text-blue-600 font-semibold">{job.department}</p>
+                            <p className="text-green-600 font-semibold">{job.department}</p>
                           </div>
                         </div>
                       </div>
@@ -254,8 +257,8 @@ export default function HRDashboard() {
                     <div className="bg-gray-50 rounded-lg p-4 mb-4">
                       <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
-                          <div className="p-2 bg-blue-100 rounded-lg">
-                            <Users className="w-5 h-5 text-blue-600" />
+                          <div className="p-2 bg-green-100 rounded-lg">
+                            <Users className="w-5 h-5 text-green-600" />
                           </div>
                           <div>
                             <div className="text-2xl font-bold text-gray-900">{applicationCounts[job.id] || 0}</div>
@@ -281,7 +284,7 @@ export default function HRDashboard() {
                           setSelectedJob(job);
                           setShowJobForm(true);
                         }}
-                        className="flex-1 px-4 py-2.5 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
+                        className="flex-1 px-4 py-2.5 border-2 border-green-600 text-green-600 font-semibold rounded-lg hover:bg-green-50 transition"
                       >
                         Edit
                       </button>

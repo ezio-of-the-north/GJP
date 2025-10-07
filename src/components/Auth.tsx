@@ -31,7 +31,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-slate-800 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-green-600 via-green-700 to-slate-800 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDEzNGg2MHY2MEgzNnptMCAwaDYwdjYwSDM2em0wIDBoNjB2NjBIMzZ6bTAgMGg2MHY2MEgzNnptMCAwaDYwdjYwSDM2em0wIDBoNjB2NjBIMzZ6bTAgMGg2MHY2MEgzNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
 
       <div className="relative min-h-screen flex items-center justify-center p-4">
@@ -45,39 +45,39 @@ export default function Auth() {
               <h1 className="text-5xl font-bold leading-tight">
                 Your Gateway to Public Service Excellence
               </h1>
-              <p className="text-xl text-blue-100">
+              <p className="text-xl text-green-100">
                 Connect with opportunities that make a difference. Join thousands of professionals building a better tomorrow.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <Briefcase className="w-10 h-10 mb-3 text-blue-200" />
+                <Briefcase className="w-10 h-10 mb-3 text-green-200" />
                 <div className="text-3xl font-bold mb-1">500+</div>
-                <div className="text-blue-100 text-sm">Active Positions</div>
+                <div className="text-green-100 text-sm">Active Positions</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <Building2 className="w-10 h-10 mb-3 text-blue-200" />
+                <Building2 className="w-10 h-10 mb-3 text-green-200" />
                 <div className="text-3xl font-bold mb-1">50+</div>
-                <div className="text-blue-100 text-sm">Departments</div>
+                <div className="text-green-100 text-sm">Departments</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <Users className="w-10 h-10 mb-3 text-blue-200" />
+                <Users className="w-10 h-10 mb-3 text-green-200" />
                 <div className="text-3xl font-bold mb-1">10K+</div>
-                <div className="text-blue-100 text-sm">Applicants</div>
+                <div className="text-green-100 text-sm">Applicants</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <TrendingUp className="w-10 h-10 mb-3 text-blue-200" />
+                <TrendingUp className="w-10 h-10 mb-3 text-green-200" />
                 <div className="text-3xl font-bold mb-1">98%</div>
-                <div className="text-blue-100 text-sm">Success Rate</div>
+                <div className="text-green-100 text-sm">Success Rate</div>
               </div>
             </div>
 
             <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-              <Clock className="w-6 h-6 text-blue-200 flex-shrink-0 mt-1" />
+              <Clock className="w-6 h-6 text-green-200 flex-shrink-0 mt-1" />
               <div>
                 <div className="font-semibold mb-1">Fast Application Process</div>
-                <div className="text-sm text-blue-100">
+                <div className="text-sm text-green-100">
                   Apply in minutes with our streamlined system. Upload your documents once and use them for multiple applications.
                 </div>
               </div>
@@ -86,10 +86,9 @@ export default function Auth() {
 
           <div className="bg-white rounded-2xl shadow-2xl w-full p-8 lg:p-10">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
-            <LogIn className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900">Government Job Portal</h1>
+          <img src="/MGB LOGO.png" alt="MGB Logo" className="h-20 w-20 mx-auto mb-4" />
+          <h1 className="text-3xl font-bold text-gray-900">MGB Career Portal</h1>
+          <p className="text-green-600 font-semibold mt-1">Mines and Geosciences Bureau - Region 2</p>
           <p className="text-gray-600 mt-2">
             {isSignUp ? 'Create your account' : 'Sign in to continue'}
           </p>
@@ -107,7 +106,7 @@ export default function Auth() {
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -122,7 +121,7 @@ export default function Auth() {
                     onClick={() => setRole('applicant')}
                     className={`py-3 px-4 rounded-lg border-2 font-medium transition ${
                       role === 'applicant'
-                        ? 'border-blue-600 bg-blue-50 text-blue-700'
+                        ? 'border-green-600 bg-green-50 text-green-700'
                         : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
@@ -133,7 +132,7 @@ export default function Auth() {
                     onClick={() => setRole('hr')}
                     className={`py-3 px-4 rounded-lg border-2 font-medium transition ${
                       role === 'hr'
-                        ? 'border-blue-600 bg-blue-50 text-blue-700'
+                        ? 'border-green-600 bg-green-50 text-green-700'
                         : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
@@ -153,7 +152,7 @@ export default function Auth() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
               placeholder="your.email@gov.in"
             />
           </div>
@@ -167,7 +166,7 @@ export default function Auth() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
               placeholder="Enter your password"
               minLength={6}
             />
@@ -182,7 +181,7 @@ export default function Auth() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               'Processing...'
@@ -207,7 +206,7 @@ export default function Auth() {
               setIsSignUp(!isSignUp);
               setError('');
             }}
-            className="text-blue-600 hover:text-blue-700 font-medium transition"
+            className="text-green-600 hover:text-green-700 font-medium transition"
           >
             {isSignUp
               ? 'Already have an account? Sign in'

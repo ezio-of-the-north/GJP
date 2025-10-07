@@ -88,7 +88,7 @@ export default function DocumentsView() {
   const getFileIcon = (fileType: string) => {
     switch (fileType) {
       case 'resume':
-        return <FileText className="w-8 h-8 text-blue-600" />;
+        return <FileText className="w-8 h-8 text-green-600" />;
       case 'certificate':
         return <Award className="w-8 h-8 text-green-600" />;
       case 'cover_letter':
@@ -108,7 +108,7 @@ export default function DocumentsView() {
 
   const getTypeColor = (type: string) => {
     const colors: Record<string, string> = {
-      resume: 'bg-blue-100 text-blue-800',
+      resume: 'bg-green-100 text-green-800',
       certificate: 'bg-green-100 text-green-800',
       cover_letter: 'bg-purple-100 text-purple-800',
       other: 'bg-gray-100 text-gray-800',
@@ -125,7 +125,7 @@ export default function DocumentsView() {
         </div>
         <button
           onClick={() => setShowUploadForm(!showUploadForm)}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition"
+          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition"
         >
           <Upload className="w-5 h-5" />
           Add Document
@@ -146,7 +146,7 @@ export default function DocumentsView() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                   placeholder="e.g., Resume 2024"
                 />
               </div>
@@ -163,7 +163,7 @@ export default function DocumentsView() {
                       file_type: e.target.value as 'resume' | 'certificate' | 'cover_letter' | 'other',
                     })
                   }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 >
                   <option value="resume">Resume</option>
                   <option value="certificate">Certificate</option>
@@ -182,7 +182,7 @@ export default function DocumentsView() {
                 required
                 value={formData.file_url}
                 onChange={(e) => setFormData({ ...formData, file_url: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 placeholder="https://example.com/your-document.pdf"
               />
               <p className="text-sm text-gray-500 mt-1">
@@ -200,7 +200,7 @@ export default function DocumentsView() {
                 onChange={(e) =>
                   setFormData({ ...formData, file_size: parseInt(e.target.value) || 0 })
                 }
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
                 placeholder="Optional - e.g., 1024"
               />
             </div>
@@ -224,7 +224,7 @@ export default function DocumentsView() {
               <button
                 type="submit"
                 disabled={uploading}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {uploading ? 'Adding...' : 'Add Document'}
               </button>
@@ -235,7 +235,7 @@ export default function DocumentsView() {
 
       {loading ? (
         <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
         </div>
       ) : documents.length === 0 ? (
         <div className="bg-white rounded-lg shadow p-12 text-center">
@@ -243,7 +243,7 @@ export default function DocumentsView() {
           <p className="text-gray-600 mb-4">No documents uploaded yet</p>
           <button
             onClick={() => setShowUploadForm(true)}
-            className="text-blue-600 hover:text-blue-700 font-semibold"
+            className="text-green-600 hover:text-green-700 font-semibold"
           >
             Add Your First Document
           </button>
@@ -253,10 +253,10 @@ export default function DocumentsView() {
           {documents.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200"
+              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border border-gray-100 hover:border-green-200"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="p-3 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                <div className="p-3 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
                   {getFileIcon(doc.file_type)}
                 </div>
                 <button
@@ -295,7 +295,7 @@ export default function DocumentsView() {
                 href={doc.file_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 block w-full text-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 px-4 rounded-lg transition shadow-sm hover:shadow-md"
+                className="mt-4 block w-full text-center bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold py-2.5 px-4 rounded-lg transition shadow-sm hover:shadow-md"
               >
                 View Document
               </a>

@@ -45,7 +45,7 @@ export default function ApplicationModal({ job, onClose, onSuccess }: Applicatio
   const getFileIcon = (fileType: string) => {
     switch (fileType) {
       case 'resume':
-        return <FileText className="w-5 h-5 text-blue-600" />;
+        return <FileText className="w-5 h-5 text-green-600" />;
       case 'certificate':
         return <Award className="w-5 h-5 text-green-600" />;
       case 'cover_letter':
@@ -91,9 +91,9 @@ export default function ApplicationModal({ job, onClose, onSuccess }: Applicatio
         </div>
 
         <div className="p-6">
-          <div className="bg-blue-50 rounded-lg p-4 mb-6">
+          <div className="bg-green-50 rounded-lg p-4 mb-6">
             <h3 className="font-bold text-lg text-gray-900 mb-2">{job.title}</h3>
-            <p className="text-blue-600 font-semibold mb-2">{job.department}</p>
+            <p className="text-green-600 font-semibold mb-2">{job.department}</p>
             <p className="text-gray-700 text-sm">{job.description}</p>
           </div>
 
@@ -107,7 +107,7 @@ export default function ApplicationModal({ job, onClose, onSuccess }: Applicatio
                 value={coverLetter}
                 onChange={(e) => setCoverLetter(e.target.value)}
                 rows={8}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition resize-none"
                 placeholder="Tell us why you're the perfect candidate for this position..."
                 minLength={50}
               />
@@ -131,7 +131,7 @@ export default function ApplicationModal({ job, onClose, onSuccess }: Applicatio
                         type="checkbox"
                         checked={selectedDocuments.includes(doc.id)}
                         onChange={() => toggleDocument(doc.id)}
-                        className="w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                        className="w-4 h-4 text-green-600 rounded focus:ring-2 focus:ring-green-500"
                       />
                       {getFileIcon(doc.file_type)}
                       <div className="flex-1">
@@ -166,7 +166,7 @@ export default function ApplicationModal({ job, onClose, onSuccess }: Applicatio
               <button
                 type="submit"
                 disabled={loading || coverLetter.length < 50}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
                 {loading ? 'Submitting...' : 'Submit Application'}

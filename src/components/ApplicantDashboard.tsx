@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase, Job, Application, Document } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import { Briefcase, Calendar, MapPin, DollarSign, LogOut, FileText, Clock, Folder, Search, Filter, TrendingUp, CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Banknote, LogOut, FileText, Clock, Folder, Search, Filter, TrendingUp, CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
 import ApplicationModal from './ApplicationModal';
 import DocumentsView from './DocumentsView';
 
@@ -295,8 +295,8 @@ export default function ApplicantDashboard() {
                           <span className="text-sm font-medium">{job.location}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-700">
-                          <DollarSign className="w-5 h-5 text-gray-500" />
-                          <span className="text-sm font-medium">{job.salary_range}</span>
+                          <Banknote className="w-5 h-5 text-gray-500" />
+                          <span className="text-sm font-medium">₱{job.salary_range}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-700">
                           <Calendar className="w-5 h-5 text-gray-500" />

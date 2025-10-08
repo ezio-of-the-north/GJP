@@ -1,4 +1,4 @@
-import { X, MapPin, DollarSign, Calendar, Briefcase, FileText, Clock, Building2 } from 'lucide-react';
+import { X, MapPin, Banknote, Calendar, Briefcase, FileText, Clock, Building2 } from 'lucide-react';
 import { Job } from '../lib/supabase';
 
 type JobDetailModalProps = {
@@ -51,10 +51,10 @@ export default function JobDetailModal({ job, onClose, onApplyClick }: JobDetail
 
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 text-gray-600 mb-2">
-                <DollarSign className="w-5 h-5 text-green-600" />
-                <span className="text-xs font-medium">Salary</span>
+                <Banknote className="w-5 h-5 text-green-600" />
+                <span className="text-xs font-medium">Salary Range</span>
               </div>
-              <p className="font-semibold text-gray-900">{job.salary_range}</p>
+              <p className="font-semibold text-gray-900">₱{job.salary_range}</p>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-4">

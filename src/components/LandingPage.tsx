@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase, Job } from '../lib/supabase';
-import { Briefcase, MapPin, Calendar, DollarSign, Search, Shield, Users, Award, ChevronRight, LogIn } from 'lucide-react';
+import { Briefcase, MapPin, Calendar, Banknote, Search, Shield, Users, Award, ChevronRight, LogIn, Heart, Laptop, GraduationCap, Building } from 'lucide-react';
 import JobDetailModal from './JobDetailModal';
 
 type LandingPageProps = {
@@ -81,13 +81,13 @@ export default function LandingPage({ onLoginClick }: LandingPageProps) {
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                Competitive Compensation
+                Government Benefits & Security
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                Professional Growth
+                Career Advancement Opportunities
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                Work-Life Balance
+                Serve the Filipino People
               </div>
             </div>
           </div>
@@ -119,6 +119,67 @@ export default function LandingPage({ onLoginClick }: LandingPageProps) {
               <p className="text-green-100">
                 Be part of a dedicated team serving the nation with scientific excellence
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About MGB Region 2</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              The Mines and Geosciences Bureau is the primary government agency under the Department of Environment and Natural Resources (DENR) responsible for the conservation, management, development, and proper use of the country's mineral resources.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8 border border-green-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+              <p className="text-gray-700 leading-relaxed">
+                To promote sustainable mineral resources development through the formulation and implementation of policies, programs, and projects that ensure responsible mining practices, geological hazard mitigation, and environmental protection for the benefit of the Filipino people.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8 border border-green-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+              <p className="text-gray-700 leading-relaxed">
+                A minerals industry that is not only prosperous but also socially, economically, and environmentally sustainable, contributing to poverty alleviation and the general economic well-being of the nation while serving as the leading geoscience authority.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                <Building className="w-8 h-8 text-green-600" />
+              </div>
+              <h4 className="font-bold text-gray-900 mb-2">Government Benefits</h4>
+              <p className="text-sm text-gray-600">Full GSIS coverage, Pag-IBIG, PhilHealth, and other government mandated benefits</p>
+            </div>
+
+            <div className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                <Heart className="w-8 h-8 text-green-600" />
+              </div>
+              <h4 className="font-bold text-gray-900 mb-2">Job Security</h4>
+              <p className="text-sm text-gray-600">Stable employment with the Philippine government and clear career progression paths</p>
+            </div>
+
+            <div className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                <GraduationCap className="w-8 h-8 text-green-600" />
+              </div>
+              <h4 className="font-bold text-gray-900 mb-2">Training & Development</h4>
+              <p className="text-sm text-gray-600">Access to professional development programs, seminars, and skills enhancement training</p>
+            </div>
+
+            <div className="text-center p-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                <Laptop className="w-8 h-8 text-green-600" />
+              </div>
+              <h4 className="font-bold text-gray-900 mb-2">Modern Facilities</h4>
+              <p className="text-sm text-gray-600">Work with state-of-the-art equipment and technology for geoscience research and development</p>
             </div>
           </div>
         </div>
@@ -196,8 +257,8 @@ export default function LandingPage({ onLoginClick }: LandingPageProps) {
                       <span className="text-sm font-medium">{job.location}</span>
                     </div>
                     <div className="flex items-center gap-3 text-gray-700">
-                      <DollarSign className="w-5 h-5 text-gray-500" />
-                      <span className="text-sm font-medium">{job.salary_range}</span>
+                      <Banknote className="w-5 h-5 text-gray-500" />
+                      <span className="text-sm font-medium">₱{job.salary_range}</span>
                     </div>
                     <div className="flex items-center gap-3 text-gray-700">
                       <Calendar className="w-5 h-5 text-gray-500" />
@@ -229,8 +290,11 @@ export default function LandingPage({ onLoginClick }: LandingPageProps) {
                   <p className="text-sm text-gray-400">Cagayan Valley</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 text-sm mb-4">
                 Promoting sustainable mineral resources development and advancing geological studies for the nation.
+              </p>
+              <p className="text-gray-400 text-xs">
+                Under the Department of Environment and Natural Resources (DENR)
               </p>
             </div>
             <div>
@@ -238,20 +302,28 @@ export default function LandingPage({ onLoginClick }: LandingPageProps) {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><a href="https://region2.mgb.gov.ph/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">MGB Region 2 Website</a></li>
                 <li><a href="https://mgb.gov.ph/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">MGB National</a></li>
+                <li><a href="https://denr.gov.ph/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">DENR Official Site</a></li>
                 <li><button onClick={onLoginClick} className="hover:text-white transition">Career Portal Login</button></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <p className="text-gray-400 text-sm">
-                Mines and Geosciences Bureau<br />
-                Regional Office No. 2<br />
-                Cagayan Valley Region
-              </p>
+              <h4 className="font-semibold mb-4">Contact Information</h4>
+              <div className="text-gray-400 text-sm space-y-2">
+                <p className="font-medium text-white">Mines and Geosciences Bureau</p>
+                <p>Regional Office No. 2</p>
+                <p>Cagayan Valley Region</p>
+                <p className="mt-3 text-xs">
+                  Serving the provinces of Batanes, Cagayan, Isabela, Nueva Vizcaya, and Quirino
+                </p>
+              </div>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 Mines and Geosciences Bureau - Region 2. All rights reserved.</p>
+          <div className="border-t border-gray-800 mt-8 pt-8">
+            <div className="text-center text-sm text-gray-400 space-y-2">
+              <p className="font-medium text-white">Republic of the Philippines</p>
+              <p>&copy; 2025 Mines and Geosciences Bureau - Region 2. All rights reserved.</p>
+              <p className="text-xs">An attached agency of the Department of Environment and Natural Resources</p>
+            </div>
           </div>
         </div>
       </footer>

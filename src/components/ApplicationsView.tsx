@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase, Application } from '../lib/supabase';
-import { FileText, User, Mail, Phone, Calendar, Search, Download } from 'lucide-react';
+import { FileText, User, Mail, Phone, Calendar, Search, Download, CheckCircle, Clock } from 'lucide-react';
 
 export default function ApplicationsView() {
   const [applications, setApplications] = useState<any[]>([]);
@@ -139,6 +139,24 @@ export default function ApplicationsView() {
                   <p className="text-green-600 font-semibold mb-2">
                     {application.jobs.department}
                   </p>
+                  <div className="flex items-center gap-3 mt-2">
+                    {application.is_complete ? (
+                      <span className="flex items-center gap-1 text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded-full">
+                        <CheckCircle className="w-3 h-3" />
+                        Complete Application
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-1 text-xs font-medium text-yellow-700 bg-yellow-100 px-2 py-1 rounded-full">
+                        <Clock className="w-3 h-3" />
+                        Incomplete
+                      </span>
+                    )}
+                    {application.document_ids && application.document_ids.length > 0 && (
+                      <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                        {application.document_ids.length} document(s)
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <span
                   className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
@@ -169,7 +187,10 @@ export default function ApplicationsView() {
                   <div className="flex items-center gap-2 text-gray-600">
                     <Calendar className="w-4 h-4 text-gray-500" />
                     <span className="text-sm">
-                      Applied: {new Date(application.applied_at).toLocaleDateString()}
+                      {application.submitted_at
+                        ? `Submitted: ${new Date(application.submitted_at).toLocaleDateString()}`
+                        : `Applied: ${new Date(application.applied_at).toLocaleDateString()}`
+                      }
                     </span>
                   </div>
                 </div>
